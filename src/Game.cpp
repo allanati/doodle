@@ -55,19 +55,19 @@ namespace an {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) x += 3;
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) x -= 3;
 
-            dy += 0.2;
+            dy += 0.2;      //velocity of doodle falling down
             y += dy;
-            if (y > 500)  dy = -10;
+            if (y > 500)  dy = -10;       //so that doodle bounces off the bottom
 
             if (y < h)
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++)    //moving platforms
                 {
                     y = h;
                     plat[i].y = plat[i].y - dy;
                     if (plat[i].y > 533) { plat[i].y = 0; plat[i].x = rand() % (400 - 68); }
                 }
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)        //checking if doodle jumpes on a platform
                 if ((x + 50 > plat[i].x) && (x + 20 < plat[i].x + 68)
                     && (y + 70 > plat[i].y) && (y + 70 < plat[i].y + 14) && (dy > 0))  dy = -10;
 
